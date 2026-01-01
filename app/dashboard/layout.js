@@ -12,7 +12,7 @@ export default function layout({children}) {
   return (
     <div className='min-h-screen flex ' >
         
-        <div className='bg-green-400 w-1/5 pt-6 '>
+        <div className='bg-green-300 w-1/5 pt-6 '>
             <ul className='space-y-6'>
                 {
                     dashItems.map((item)=> (
@@ -26,7 +26,7 @@ export default function layout({children}) {
             </ul>
         </div>
 
-        <div className='bg-stone-300 w-full'>
+        <div className='bg-gray-300 w-full'>
         {children}
         </div>
     </div>
