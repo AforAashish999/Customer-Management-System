@@ -13,7 +13,7 @@ export default function NavBar() {
         {label:"Register", href:"/register"}
     ]
   return (
-    <nav className='w-full flex items-center justify-between pl-4 pr-12 py-2 4 bg-white border-gray-200 border-b-[1.5px] '>
+    <nav className='w-full flex items-center justify-between pl-4 pr-12 py-2 4 bg-white border-gray-200 border-b -[1.5px] '>
            {/* Image */}
          <div className='h-10 w-35 bg-red-500'>
             <div className='relative h-full w-full'>

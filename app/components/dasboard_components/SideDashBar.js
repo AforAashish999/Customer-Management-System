@@ -16,7 +16,7 @@ export default function SideDashBar () {
         { icon: <GiTakeMyMoney className="text-xl" />, label: "Transactions", href: "/transactions" }
     ]
   return (
-    <div className='bg-white w-52 pt-6 border-gray-200 border-r-[1.5px] '>
+    <div className='bg-white w-52 pt-6 border-gray-200 border-r -[1.5px] '>
       <ul className='space-y-4 px-2'>
         {dashItems.map(item => (
           <li key={item.href}>

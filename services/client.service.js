@@ -20,6 +20,10 @@ const ClientService = {
     update: async(id, payload) => {
         const { data } = await api.put(`/clients/${id}`, payload);
         return data;
+    },
+    getById: async(id) => {
+        const { data } = await api.get(`/clients/${id}`);
+        return data;
     }
 }
 

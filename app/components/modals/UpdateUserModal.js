@@ -1,22 +1,30 @@
 "use client"
-// import { useForm } from "react-hook-form";
-import  { useActionState } from "react";
-import { createClientAction } from "../../actions/client.action";
+import  { useActionState, useEffect } from "react";
+import { updateClientAction } from "../../actions/client.action";
+import { toast } from "sonner"
 
 
-export default function UpdateUserModal({closeModal}) {
-    const [state, formAction ] = useActionState(createClientAction, null);
- 
+export default function UpdateUserModal({closeModal, singleClient}) {
+    const [state, formAction ] = useActionState(updateClientAction, null);
 
+    useEffect(()=> {
+        if(state?.success === true){
+            toast.success("Client Updated succesfully");
+            closeModal();
+        } 
+        else if(state?.success === false) {
+            toast.error(state.message);
+        }
+    }, [state])
+    
   return (
     <div className="h-screen backdrop-blur-md fixed inset-0 flex justify-center items-center z-500 ">
         <form 
         action={formAction}
         className='bg-white shadow-xl min-h-1/2 min-w- w-3/9 p-6 rounded-xl space-y-2 flex flex-col'>
 
-<div>
-    
-</div>
+            <input type="hidden" name="id" value={singleClient.id} />
+
         <div className="flex flex-col space-y-1">
             <label className="text -sm">
                 Name
@@ -24,7 +32,7 @@ export default function UpdateUserModal({closeModal}) {
             <input 
             name="name"
             type="text"
-            placeholder='Enter new customer name'
+            defaultValue={singleClient.name}
             className='bg-white focus:outline-none rounded-lg p-2 caret-green-500 opacity-50 border '
             />
         </div>
@@ -36,7 +44,7 @@ export default function UpdateUserModal({closeModal}) {
             <input 
             name="email"
             type="email"
-            placeholder='Enter new customer email'
+            defaultValue={singleClient.email}
             className='bg-white  w- fit focus:outline-none rounded-lg p-2 caret-green-500 opacity-50 border'
             />
 
@@ -49,7 +57,7 @@ export default function UpdateUserModal({closeModal}) {
             <input 
             name="address"
             type="text"
-            placeholder='Enter new customer address'
+               defaultValue={singleClient.address}
             className='bg-white  w- fit focus:outline-none rounded-lg p-2 caret-green-500 opacity-50 border'
             />
 
@@ -62,7 +70,7 @@ export default function UpdateUserModal({closeModal}) {
             <input 
             name="phone_no"
             type="number"
-            placeholder='Enter new customer phone number'
+                defaultValue={singleClient.phone_no}
             className='bg-white w- fit focus:outline-none rounded-lg p-2 caret-green-500 opacity-50 border'
             />
 
@@ -75,7 +83,7 @@ export default function UpdateUserModal({closeModal}) {
             <input 
             name="organization"
             type="text"
-            placeholder='Enter new customer phone number'
+               defaultValue={singleClient.organization}
             className='bg-white w- fit focus:outline-none rounded-lg p-2 caret-green-500 opacity-50 border'
             />
 
@@ -88,7 +96,7 @@ export default function UpdateUserModal({closeModal}) {
             <input 
             name="project"
             type="text"
-            placeholder='Enter project name'
+                defaultValue={singleClient.project}
             className='bg-white focus:outline-none rounded-lg p-2 caret-green-500 opacity-50 border'
             />
 

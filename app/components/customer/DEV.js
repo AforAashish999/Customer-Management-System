@@ -4,11 +4,12 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { MdDeleteForever } from "react-icons/md";
-import { deleteClientAction } from "../../actions/client.action";
+import { deleteClientAction, updateClientAction } from "../../actions/client.action";
 import UpdateUserModal from "../modals/UpdateUserModal";
+import ViewUserModal from "../modals/ViewUserModal";
 
-export default function DEV({id}) {
-  const [view, setView] = useState(true);
+export default function DEV({id, singleClient}) {
+  const [view, setView] = useState(false);
   const [update, setUpdate] = useState(false);
   return (
     <div className="flex gap-x-2 justify- around">
@@ -16,7 +17,7 @@ export default function DEV({id}) {
        onClick={()=>setView(!view)}
        className="text-gray-500 cursor-pointer transform transition-all duration-100 hover:text-gray-400 hover:scale-110 " 
        >
-        {view?  <FaEyeSlash /> :  <FaEye/>}
+        {view? <FaEye/> : <FaEyeSlash /> }
       </button>
     
       <button
@@ -32,8 +33,13 @@ export default function DEV({id}) {
 
         {/* update modal */}
         {update && 
-        <UpdateUserModal closeModal={() => setUpdate(false)}  />
+        <UpdateUserModal closeModal={() => setUpdate(false)} singleClient={singleClient} />
         }
+
+        {/* view modal */}
+        {view && 
+         <ViewUserModal closeModal={()=>setView(false)} singleClient={singleClient} />
+          }
     </div>
   )
 }

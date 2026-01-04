@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "./components/NavBar.js"
 import SideDashBar from "./components/dasboard_components/SideDashBar"
 import DashHeading from "./components/dasboard_components/DashHeading"
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
               <div className='bg-gray-100 flex-1 overflow-auto'>
                 <DashHeading />
               {children}
+              <Toaster position="top-right" richColors />
               </div>
           </div>
 

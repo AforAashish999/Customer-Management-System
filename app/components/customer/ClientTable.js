@@ -15,7 +15,7 @@ export default async function ClientTable() {
   // 3rd way
   const clients = await ClientService.getAll();
 
-  return (
+  return (  
     <div >
       <table className=' w-full rounded-lg overflow-hidden shadow-lg'>
         <thead className=''>
@@ -46,7 +46,7 @@ export default async function ClientTable() {
               <td className='bg-white '> {item.address} </td>
               <td className='bg-white '>
                 {' '}
-                <DEV id={item.id} /> {' '}
+                <DEV id={item.id} singleClient={item} /> {' '}
               </td>
             </tr>
           ))}

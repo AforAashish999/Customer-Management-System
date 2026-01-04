@@ -1,13 +1,24 @@
 "use client"
 // import { useForm } from "react-hook-form";
-import  { useActionState } from "react";
+import  { useActionState, useEffect } from "react";
 import { createClientAction } from "../../actions/client.action";
+import { toast } from "sonner"
+
 
 
 export default function AddUserModal({closeModal}) {
     const [state, formAction ] = useActionState(createClientAction, null);
- 
 
+    useEffect(()=> {
+        if(state?.success === true){
+            toast.success("Client created succesfully");
+            closeModal();
+        } 
+        else if(state?.success === false) {
+            toast.error(state.message);
+        }
+    }, [state])
+ 
   return (
     <div className="h-screen backdrop-blur-md fixed inset-0 flex justify-center items-center z-500 ">
         <form 

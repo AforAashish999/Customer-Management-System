@@ -16,7 +16,7 @@ export async function createClientAction(prevState, formData) {
 
         await ClientService.create(payload);
         revalidatePath("/clients");
-        // redirect("/clients")
+       
         return {success: true }
     }
      catch(error){
@@ -46,6 +46,8 @@ export async function updateClientAction(prevState, formData){
         }
         await ClientService.update(id, payload);
         revalidatePath("/clients");
+
+        return { success: true}
     }
     catch(error){
         return{
