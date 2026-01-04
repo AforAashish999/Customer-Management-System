@@ -4,13 +4,15 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { MdDeleteForever } from "react-icons/md";
-import { deleteClientAction, updateClientAction } from "../../actions/client.action";
 import UpdateUserModal from "../modals/UpdateUserModal";
 import ViewUserModal from "../modals/ViewUserModal";
+import DeleteUserModal from "../modals/DeleteUserModal";
 
 export default function DEV({id, singleClient}) {
   const [view, setView] = useState(false);
   const [update, setUpdate] = useState(false);
+  const [isDelete, setIsDelete ] = useState(false);
+
   return (
     <div className="flex gap-x-2 justify- around">
       <button
@@ -25,8 +27,10 @@ export default function DEV({id, singleClient}) {
       >
         <GrDocumentUpdate className="cursor-pointer text-[#27ac52] transition-all transform ease-in duration-100 hover:scale-110 "/>
       </button>
+
         <button
-         onClick={()=> deleteClientAction(id)}
+        //  onClick={()=> deleteClientAction(id)}
+        onClick={() => setIsDelete(!isDelete)}
         >
         <MdDeleteForever className="text-red-500 text-xl transform transition-all ease-in duration-300 hover:rotate-180 cursor-pointer " />
         </button>
@@ -40,6 +44,13 @@ export default function DEV({id, singleClient}) {
         {view && 
          <ViewUserModal closeModal={()=>setView(false)} singleClient={singleClient} />
           }
+
+          {/* delete modal */}
+          {
+            isDelete && 
+            <DeleteUserModal id={id} closeModal={()=> setIsDelete(false) } />
+          }
+       
     </div>
   )
 }

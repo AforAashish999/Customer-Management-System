@@ -109,13 +109,15 @@ export default function AddUserModal({closeModal}) {
             <div className='flex gap-6 pt-3'>
                 <button
                 type="submit"
-                className='flex-1 bg-[#27ac52] hover:bg-[#00bf63] cursor-pointer transition-all duration-100 ease-in text-white py-2 rounded-2xl font-semibold '>
+                className='flex-1 bg-[#27ac52] hover:bg-[#00bf63] cursor-pointer transition-all duration-200 ease-in text-white py-2 rounded-2xl 
+                font-semibold hover:scale-102 hover:-translate-y-1 '>
                     Submit
                 </button>
                 <button
                 type="button"
                 onClick={closeModal}
-                className='flex-1 bg-[#27ac52] hover:bg-[#00bf63] cursor-pointer transition-all duration-100 ease-in text-white rounded-2xl font-semibold '>
+                className='flex-1 bg-gray-500 hover:bg-gray-300 cursor-pointer transition-all duration-100 ease-in text-white rounded-2xl
+                 font-semibold hover:scale-102 hover:-translate-y-1 '>
                     Cancel
                 </button>
             </div>
