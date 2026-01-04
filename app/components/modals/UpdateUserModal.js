@@ -4,7 +4,7 @@ import  { useActionState } from "react";
 import { createClientAction } from "../../actions/client.action";
 
 
-export default function AddUserModal({closeModal}) {
+export default function UpdateUserModal({closeModal}) {
     const [state, formAction ] = useActionState(createClientAction, null);
  
 
@@ -27,7 +27,6 @@ export default function AddUserModal({closeModal}) {
             placeholder='Enter new customer name'
             className='bg-white focus:outline-none rounded-lg p-2 caret-green-500 opacity-50 border '
             />
-
         </div>
 
         <div className="flex flex-col space-y-1">

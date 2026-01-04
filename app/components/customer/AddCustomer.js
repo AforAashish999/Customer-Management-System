@@ -20,6 +20,7 @@ export default function AddCustomer() {
         open &&
       <AddUserModal closeModal={() => setOpen(false)} />
       }
+      
 
     </div>
   )
