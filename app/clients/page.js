@@ -1,9 +1,13 @@
+export const dynamic = "force-dynamic";
 import AddCustomer from "../components/customer/AddCustomer";
 import SearchSort from "../components/customer/SearchSort";
 import ClientTable from "../components/customer/ClientTable";
+import Sort from "../components/customer/Sort";
+import Filter from "../components/customer/Filter";
 
 
-export default function page() {
+export default async function page({searchParams}) {
+  const params = await searchParams;
   return (
     <div className='w-full flex flex-col pt-6 px-6 space-y-8'>
 
@@ -13,11 +17,13 @@ export default function page() {
       </div>
 
       {/* Search sort */}
-      <div className='flex justify-start'>
+      <div className='flex gap-x-4 justify-start'>
         <SearchSort />
+        <Filter />
+        <Sort />
       </div>
 
-      <ClientTable />
+      <ClientTable search={  params.search || ""} />
     </div>
   )
 }

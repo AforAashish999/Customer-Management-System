@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ViewUserModal({singleClient, closeModal}) {
   return (
-    <div className="h-screen backdrop-blur-md fixed inset-0 flex justify-center items-center z-500 "> 
+    <div className="h-screen  fixed inset-0 flex justify-center items-center z-500 "> 
 
 <div className='bg-white p-8 space-y-12'>
     <h1 className='text-green-500 text-3xl font-semibold'> {singleClient.project} </h1>

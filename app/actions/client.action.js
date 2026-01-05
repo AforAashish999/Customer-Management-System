@@ -11,7 +11,8 @@ export async function createClientAction(prevState, formData) {
             address: formData.get("address"),
             phone_no: formData.get("phone_no"),
             organization: formData.get("organization"),
-            project: formData.get("project")
+            project: formData.get("project"),
+            created_at: new Date().toISOString() // ← auto timestamp
         };
 
         await ClientService.create(payload);

@@ -12,7 +12,7 @@ export default function DashHeading() {
     const currentPath = dashItems.find((item) => item.href === pathName )
 
   return (
-        <div className="h-20 flex items-center pl-12 bg-white border-gray-200 border-b ">
+        <div className="h-18 flex items-center pl-12 bg-white border-gray-200 border-b ">
                       <h1 className="text-4xl font-semibold text-gray-600 ">
                         {currentPath? currentPath.label : 'Dashboard'}
                       </h1>

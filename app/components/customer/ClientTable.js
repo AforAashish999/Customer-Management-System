@@ -1,11 +1,11 @@
-
+// export const dynamic = "force-dynamic";
 // import axios from 'axios'
 // import api from "../../../lib/axios"
 import ClientService from "@/services/client.service"
 import DEV from "./DEV"
+  
 
-
-export default async function ClientTable() {
+export default async function ClientTable( { search } ) {
   // 1st way
   // const { data } = await axios.get('http://localhost:5000/clients')
 
@@ -13,7 +13,8 @@ export default async function ClientTable() {
   // const {data} = await api.get("/clients");
 
   // 3rd way
-  const clients = await ClientService.getAll();
+  console.log("SERVER SEARCH:", search);
+  const clients = await ClientService.getAll( { search } );
 
   return (  
     <div >
