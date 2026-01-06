@@ -5,7 +5,7 @@ import ClientService from "@/services/client.service"
 import DEV from "./DEV"
   
 
-export default async function ClientTable( { search } ) {
+export default async function ClientTable( { search, _sort, _order } ) {
   // 1st way
   // const { data } = await axios.get('http://localhost:5000/clients')
 
@@ -14,7 +14,7 @@ export default async function ClientTable( { search } ) {
 
   // 3rd way
   console.log("SERVER SEARCH:", search);
-  const clients = await ClientService.getAll( { search } );
+  const clients = await ClientService.getAll( { search, _sort, _order  } );
 
   return (  
     <div >
@@ -26,6 +26,7 @@ export default async function ClientTable( { search } ) {
               Project{' '}
             </th>
             <th className=' text-sm text-gray-500 font-semibold '> Name </th>
+            <th className=' text-sm text-gray-500 font-semibold '> Organization </th>
             <th className='text-sm text-gray-500 font-semibold'> Contact </th>
             <th className='text-sm text-gray-500 font-semibold '> Address </th>
             <th className='text-sm text-gray-500 font-semibold '> Actions </th>
@@ -36,14 +37,12 @@ export default async function ClientTable( { search } ) {
           {clients.map(item => (
             <tr
               key={item.id}
-              className='border-gray-200 border-b  text-gray-700 '
+              className='border-gray-200 border-b  text-gray-700  '
             >
-              <td className='bg-white pl-2 '> {item.project} </td>
+              <td className='bg-white pl-2 p-1 '> {item.project} </td>
               <td className='bg-white'> {item.name} </td>
-              <td className='bg-white  py-2 '>
-                {' '}
-                <p>{item.email}</p> <p>{item.phone_no}</p>{' '}
-              </td>
+               <td className='bg-white'> {item.organization} </td>
+              <td className='bg-white max-w-50 truncate '>{item.email} </td>
               <td className='bg-white '> {item.address} </td>
               <td className='bg-white '>
                 {' '}

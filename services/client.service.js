@@ -6,22 +6,25 @@ const ClientService = {
     //     return data;
     // },
     //Updating ClientService to support search (SERVER-SIDE)
-    getAll: async ({ search } = {}) => {
+    getAll: async ({ search, _sort, _order } = {}) => {
         const params = {};
-        if (search) {
+        if (search) { 
             params.name_like = search;
+        }
+        if(_sort && _order){
+            params._sort = _sort;
+            params._order = _order
         }
         const { data } = await api.get("/clients", {
             params,
             headers: {
-                "Cache-Control": "no-store"
+                "Cache-Control": "no-store" //or next: { revalidate: 0 }
             } 
-            //or
-            //  next: { revalidate: 0 }
         });
         return data;
     
     },
+
     // create: async (payload) => {
     //     const res = await api.post("/clients", payload);
     //     return res.data;
